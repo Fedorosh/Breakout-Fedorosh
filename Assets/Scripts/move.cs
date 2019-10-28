@@ -15,7 +15,6 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKey("left"))
         {
             bumper.AddForce(new Vector2(-speed, 0.0f));
@@ -25,13 +24,5 @@ public class move : MonoBehaviour
             bumper.AddForce(new Vector2(speed, 0.0f));
         }
         else bumper.velocity = Vector2.zero;
-
-        if (bumper.position.x >= 10.4f && bumper.position.x <= -10.4f)
-        {
-            if (bumper.position.x < 0)
-                bumper.position = new Vector2(-10.4f, -5.5f);
-            if (bumper.position.x > 0)
-                bumper.position = new Vector2(10.4f, -5.5f);
-        }
     }
 }
