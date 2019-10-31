@@ -21,22 +21,17 @@ public class move : MonoBehaviour
     void Update()
     {
             if (Input.GetKey("right") && !Input.GetKey("left"))
-            {
-                //bumper.AddForce(new Vector2(-speed, 0.0f));
                 MoveBumper((float)sign.plus);
-            }
+
             if (Input.GetKey("left") && !Input.GetKey("right"))
-            {
-                //bumper.AddForce(new Vector2(speed, 0.0f));
                 MoveBumper((float)sign.minus);
-            }
 
         //else bumper.velocity = Vector2.zero;
         //Vector2 temp = transform.position;
         //temp.x += Input.GetKeyDown(KeyCode.RightArrow);
         //bumper.transform.position = new Vector2(actual_x + speed, y);
 
-        ActualPosition();
+            ActualPosition();
 
     }
 
