@@ -15,6 +15,12 @@ public class MoveBall : Move
     void Update()
     {
         
+  
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       // bumper.gravityScale = -bumper.gravityScale;
     }
 
     override protected void ActualPosition()

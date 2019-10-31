@@ -9,6 +9,7 @@ public abstract class Move : MonoBehaviour
     protected float x;
     protected float y;
     protected enum sign : int { plus = 1, minus = -1 };
+    public Camera kamera;
 
     protected virtual void Start()
     {
