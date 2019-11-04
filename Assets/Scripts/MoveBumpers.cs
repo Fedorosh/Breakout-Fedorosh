@@ -7,9 +7,9 @@ public class MoveBumpers : Move
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(kamera.orthographicSize);
-
-        if (x > -10.4 && x < 10.4)
+        //Debug.Log(kamera.orthographicSize);
+        Debug.Log(-borders);
+        if (x > (-borders) && x < borders)
         {
             if (Input.GetKey("right") && !Input.GetKey("left"))
                 MoveBumper((float)sign.plus);
@@ -19,10 +19,10 @@ public class MoveBumpers : Move
         }
 
 
-        if (x < -10.4)
-            MakeToWall(-10.4f);
-        if (x > 10.4)
-            MakeToWall(10.4f);
+        if (x < -borders)
+            MakeToWall((float)-borders);
+        if (x > borders)
+            MakeToWall((float)borders);
         //else bumper.velocity = Vector2.zero;
         //Vector2 temp = transform.position;
         //temp.x += Input.GetKeyDown(KeyCode.RightArrow);

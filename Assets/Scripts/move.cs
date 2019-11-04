@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Move : MonoBehaviour
 {
+    public double borders;
     protected Rigidbody2D bumper;
     public float speed;
     protected float x;
@@ -18,7 +19,7 @@ public abstract class Move : MonoBehaviour
         y = bumper.transform.position.y;
     }
 
-    virtual protected void MoveBumper(float sign)
+    virtual protected void MoveBumper(float sign = 1.0f)
     {
         bumper.transform.position = new Vector2(x + (speed * sign), y);
     }
