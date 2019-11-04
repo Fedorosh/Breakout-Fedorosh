@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class MoveBumpers : Move
 {
+    //public Rigidbody2D ball;
+    
     // Update is called once per frame
     void Update()
     {
+        
         //Debug.Log(kamera.orthographicSize);
         Debug.Log(-borders);
         if (x > (-borders) && x < borders)
         {
             if (Input.GetKey("right") && !Input.GetKey("left"))
+            {
                 MoveBumper((float)sign.plus);
+            }
+                
 
             if (Input.GetKey("left") && !Input.GetKey("right"))
+            {
                 MoveBumper((float)sign.minus);
+            }
+                
         }
 
 
