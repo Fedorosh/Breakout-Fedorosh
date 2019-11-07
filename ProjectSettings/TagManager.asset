@@ -7,6 +7,7 @@ TagManager:
   - X_col
   - Y_col
   - Block
+  - Interface
   layers:
   - Default
   - TransparentFX
