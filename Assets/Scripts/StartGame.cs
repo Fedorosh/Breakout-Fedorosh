@@ -43,7 +43,6 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(lost);
         if(Input.GetKey(KeyCode.Escape))
         {
             Application.LoadLevel(Application.loadedLevel);

@@ -12,6 +12,7 @@ public class Failure : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.tag == "X_col" || other.tag == "Y_col")
         obiekt.GetComponent<StartGame>().Lost = true;
     }
 }
