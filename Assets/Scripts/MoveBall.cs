@@ -6,7 +6,6 @@ public class MoveBall : Move
 {
     float decider_x,decider_y;
     CapsuleCollider2D x_col, y_col;
-    private bool isStart = false;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -20,9 +19,6 @@ public class MoveBall : Move
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-            isStart = true;
-        if (isStart)
         MoveBumper();
         ActualPosition();
     }
