@@ -6,21 +6,28 @@ using UnityEngine.UI;
 public class StartGame : MonoBehaviour
 {
     public Text play;
-    private bool lost, won;
+    private bool lost;
     GameObject obiekt_ball,obiekt_interface;
+    int bricks_amount,count_win;
 
     public bool Lost { get => lost; set => lost = value; }
-    public bool Won { get => won; set => won = value; }
+    public int Count_win { get => count_win; set => count_win = value; }
+
 
     // Start is called before the first frame update
     void Start()
     {
+        count_win = 0;
         lost = false;
-        won = false;
         obiekt_ball = GameObject.Find("ball");
         obiekt_interface = GameObject.Find("Interface");
         obiekt_interface.active = false;
         GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
+        bricks_amount = 0;
+        foreach(var x in GameObject.FindGameObjectsWithTag("Block"))
+        {
+            bricks_amount++;
+        }
     }
 
     public void StartOver()
@@ -43,6 +50,7 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(count_win);
         if(Input.GetKey(KeyCode.Escape))
         {
             Application.LoadLevel(Application.loadedLevel);
@@ -54,8 +62,15 @@ public class StartGame : MonoBehaviour
         }
         if (lost)
         {
-            play.text = "You Lost!";
+            play.text = "You Lose!";
             
+            obiekt_interface.active = true;
+            DisableGame();
+        }
+        if(count_win == bricks_amount)
+        {
+            play.text = "You win!";
+
             obiekt_interface.active = true;
             DisableGame();
         }

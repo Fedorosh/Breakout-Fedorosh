@@ -13,6 +13,9 @@ public class Failure : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "X_col" || other.tag == "Y_col")
-        obiekt.GetComponent<StartGame>().Lost = true;
+        {
+            obiekt.GetComponent<StartGame>().Lost = true;
+    
+        }
     }
 }

@@ -12,6 +12,7 @@ public class Destroy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameObject.Find("GameController").GetComponent<StartGame>().Count_win++;
         collision.otherCollider.gameObject.active = false;
     }
     // Update is called once per fra
