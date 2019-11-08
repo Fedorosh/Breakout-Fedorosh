@@ -1845,6 +1845,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1050793135646304141, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050793135646304141, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2238366009573013252, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
