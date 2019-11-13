@@ -4,16 +4,18 @@ using UnityEngine;
 
 public abstract class Move : MonoBehaviour
 {
-    public double borders;
     protected Rigidbody2D bumper;
     public float speed;
     protected float x;
     protected float y;
+    protected bool isCollidedLeft,isCollidedRight;
     protected enum sign : int { plus = 1, minus = -1 };
     public Camera kamera;
 
     protected virtual void Start()
     {
+        isCollidedLeft = false;
+        isCollidedRight = false;
         bumper = GetComponent<Rigidbody2D>();
         ActualPosition();
         y = bumper.transform.position.y;

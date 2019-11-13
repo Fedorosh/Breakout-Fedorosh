@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class MoveBumpers : Move
 {
-    //public Rigidbody2D ball;
     
     // Update is called once per frame
     void Update()
     {
-        if (x > (-borders) && x < borders)
-        {
-            if (Input.GetKey("right") && !Input.GetKey("left"))
-            {
+            if (Input.GetKey("right") && !Input.GetKey("left") && !isCollidedRight)
                 MoveBumper((float)sign.plus);
-            }
-
-            if (Input.GetKey("left") && !Input.GetKey("right"))
-            {
+            if (Input.GetKey("left") && !Input.GetKey("right") && !isCollidedLeft)
                 MoveBumper((float)sign.minus);
-            }
-        }
-        if (x < -borders)
-            MakeToWall((float)-borders);
-        if (x > borders)
-            MakeToWall((float)borders);
 
         ActualPosition();
 
     }
 
-    void MakeToWall(float f)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        bumper.transform.position = new Vector2(f, y);
+        if (collision.collider.tag == "wallleft")
+            isCollidedLeft = true;
+        if (collision.collider.tag == "wallright")
+            isCollidedRight = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "wallright" )
+            isCollidedRight = false;
+        if (collision.collider.tag == "wallleft")
+            isCollidedLeft = false;
     }
 }

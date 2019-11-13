@@ -8,6 +8,11 @@ TagManager:
   - Y_col
   - Block
   - Interface
+  - lostline
+  - lostleft
+  - lostright
+  - wallleft
+  - wallright
   layers:
   - Default
   - TransparentFX
