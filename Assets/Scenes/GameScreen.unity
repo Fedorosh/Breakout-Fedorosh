@@ -1646,6 +1646,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff244ad59cedd046a76400892a8cc64, type: 3}
+--- !u!1 &1929106230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1135988921133485100, guid: a318cf88945876a48952ab3d71dacf35,
+    type: 3}
+  m_PrefabInstance: {fileID: 1135988921084507216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1929106233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929106230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612f7cb52798f094a8f87db539cd768c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneWidth: 22
 --- !u!1001 &1942753324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1874,6 +1893,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 16916172}
+    - target: {fileID: 3836008963167089962, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836008963167089962, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9832641
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60891b8c7283ae14ab5a9ae3bc1bc048, type: 3}
 --- !u!1001 &1135988921084507216
@@ -1888,6 +1917,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 1135988921133485103, guid: a318cf88945876a48952ab3d71dacf35,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6.1846476
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135988921133485103, guid: a318cf88945876a48952ab3d71dacf35,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135988921133485103, guid: a318cf88945876a48952ab3d71dacf35,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135988921133485103, guid: a318cf88945876a48952ab3d71dacf35,
+        type: 3}
+      propertyPath: field of view
+      value: 6.871147
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135988921133485103, guid: a318cf88945876a48952ab3d71dacf35,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1135988921133485264, guid: a318cf88945876a48952ab3d71dacf35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1896,7 +1950,7 @@ PrefabInstance:
     - target: {fileID: 1135988921133485264, guid: a318cf88945876a48952ab3d71dacf35,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1135988921133485264, guid: a318cf88945876a48952ab3d71dacf35,
         type: 3}
@@ -2437,7 +2491,7 @@ PrefabInstance:
     - target: {fileID: 8158303129062611203, guid: 863487bf8ddf3524f980e01aa13c4d18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8158303129062611203, guid: 863487bf8ddf3524f980e01aa13c4d18,
         type: 3}
@@ -2483,6 +2537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158303129062611203, guid: 863487bf8ddf3524f980e01aa13c4d18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2914063
       objectReference: {fileID: 0}
     - target: {fileID: 8158303129062611261, guid: 863487bf8ddf3524f980e01aa13c4d18,
         type: 3}
