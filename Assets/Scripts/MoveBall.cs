@@ -34,15 +34,15 @@ public class MoveBall : Move
         
             if(temp.direction == CapsuleDirection2D.Horizontal)
              {
-            decider_x = -decider_x; 
+                decider_x = -decider_x; 
             
              }
-        if (temp.direction == CapsuleDirection2D.Vertical)
+            else if (temp.direction == CapsuleDirection2D.Vertical)
             {
-            decider_y = -decider_y;
-            if(collision.gameObject.GetComponent<MoveBumpers>() != null)
-            decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
-        }
+                decider_y = -decider_y;
+                if(collision.gameObject.GetComponent<MoveBumpers>() != null)
+                decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
+            }
     }
 
     override protected void ActualPosition()

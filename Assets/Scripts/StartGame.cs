@@ -89,5 +89,8 @@ public class StartGame : MonoBehaviour
             obiekt_interface.active = true;
             DisableGame();
         }
+        if (obiekt_interface.active)
+            Cursor.visible = true;
+        else Cursor.visible = false;
     }
 }
