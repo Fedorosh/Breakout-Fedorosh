@@ -17,7 +17,7 @@ public class MoveBumpers : Move
         if ((isCollidedLeft && translation < 0) || (isCollidedRight && translation > 0))
             bumper.transform.Translate(0, 0, 0);
         else
-            bumper.transform.Translate(translation, 0, 0);
+            bumper.transform.Translate(translation * speed, 0, 0);
         ActualPosition();
 
     }

@@ -26,6 +26,14 @@ public class StartGame : MonoBehaviour
         
     }
 
+    public void Resume()
+    {
+        play.text = "";
+
+        obiekt_interface.active = false;
+        EnableGame();
+    }
+
     public void StartOver()
     {
         Application.LoadLevel(Application.loadedLevel);
@@ -34,6 +42,13 @@ public class StartGame : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void EnableGame()
+    {
+        foreach (var x in GameObject.Find("Bumpers").GetComponentsInChildren<MoveBumpers>())
+            x.enabled = true;
+        GameObject.Find("ball").GetComponent<MoveBall>().enabled = true;
     }
 
     private void DisableGame()
@@ -49,7 +64,10 @@ public class StartGame : MonoBehaviour
         Debug.Log(count_win);
         if(Input.GetKey(KeyCode.Escape))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            play.text = "Pause";
+
+            obiekt_interface.active = true;
+            DisableGame();
         }
         if(Input.GetKey(KeyCode.Space))
         {
