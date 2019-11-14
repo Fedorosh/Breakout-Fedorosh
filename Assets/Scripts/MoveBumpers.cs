@@ -12,12 +12,13 @@ public class MoveBumpers : Move
 
         if (Input.GetKey("left") && !Input.GetKey("right") && !isCollidedLeft) MoveBumper((float)sign.minus);
 
-        float translation = Input.GetAxis("Mouse X");
+        Translation = Input.GetAxis("Mouse X");
 
-        if ((isCollidedLeft && translation < 0) || (isCollidedRight && translation > 0))
+        if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
             bumper.transform.Translate(0, 0, 0);
         else
-            bumper.transform.Translate(translation * speed, 0, 0);
+            bumper.transform.Translate(Translation * speed, 0, 0);
+
         ActualPosition();
 
     }

@@ -11,6 +11,9 @@ public abstract class Move : MonoBehaviour
     protected bool isCollidedLeft,isCollidedRight;
     protected enum sign : int { plus = 1, minus = -1 };
     public Camera kamera;
+    private float translation;
+
+    public float Translation { get => translation; set => translation = value; }
 
     protected virtual void Start()
     {

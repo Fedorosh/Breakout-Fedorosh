@@ -33,9 +33,16 @@ public class MoveBall : Move
         CapsuleCollider2D temp = (CapsuleCollider2D)collision.otherCollider;
         
             if(temp.direction == CapsuleDirection2D.Horizontal)
-            decider_x = -decider_x;
-            if (temp.direction == CapsuleDirection2D.Vertical)
+             {
+            decider_x = -decider_x; 
+            
+             }
+        if (temp.direction == CapsuleDirection2D.Vertical)
+            {
             decider_y = -decider_y;
+            if(collision.gameObject.GetComponent<MoveBumpers>() != null)
+            decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
+        }
     }
 
     override protected void ActualPosition()

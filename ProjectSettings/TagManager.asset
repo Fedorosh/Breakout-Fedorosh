@@ -13,6 +13,7 @@ TagManager:
   - lostright
   - wallleft
   - wallright
+  - bumper
   layers:
   - Default
   - TransparentFX
