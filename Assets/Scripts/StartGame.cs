@@ -8,7 +8,7 @@ public class StartGame : MonoBehaviour
     public Text play;
     private bool lost;
     GameObject obiekt_ball,obiekt_interface;
-    int bricks_amount,count_win;
+    int count_win;
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
@@ -17,17 +17,13 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count_win = 0;
+        count_win = 1;
         lost = false;
         obiekt_ball = GameObject.Find("ball");
         obiekt_interface = GameObject.Find("Interface");
         obiekt_interface.active = false;
         GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
-        bricks_amount = 0;
-        foreach(var x in GameObject.FindGameObjectsWithTag("Block"))
-        {
-            bricks_amount++;
-        }
+        
     }
 
     public void StartOver()
@@ -67,7 +63,7 @@ public class StartGame : MonoBehaviour
             obiekt_interface.active = true;
             DisableGame();
         }
-        if(count_win == bricks_amount)
+        if (Count_win == 0)
         {
             play.text = "You win!";
 
