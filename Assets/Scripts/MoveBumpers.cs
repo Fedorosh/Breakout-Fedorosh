@@ -14,6 +14,8 @@ public class MoveBumpers : Move
 
         Translation = Input.GetAxis("Mouse X");
 
+        Debug.Log(Translation);
+
         if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
             bumper.transform.Translate(0, 0, 0);
         else

@@ -7,7 +7,7 @@ public class StartGame : MonoBehaviour
 {
     public Text play;
     private bool lost;
-    GameObject obiekt_ball,obiekt_interface;
+    GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
     int count_win;
 
     public bool Lost { get => lost; set => lost = value; }
@@ -21,8 +21,10 @@ public class StartGame : MonoBehaviour
         count_win = 1;
         lost = false;
         obiekt_ball = GameObject.Find("ball");
-        obiekt_interface = GameObject.Find("Interface");
-        obiekt_interface.active = false;
+        obiekt_pause = GameObject.Find("pause");
+        obiekt_win_lose = GameObject.Find("win/lose");
+        obiekt_win_lose.active = false;
+        obiekt_pause.active = false;
         GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
         
     }
@@ -31,7 +33,7 @@ public class StartGame : MonoBehaviour
     {
         play.text = "";
 
-        obiekt_interface.active = false;
+        obiekt_pause.active = false;
         EnableGame();
     }
 
@@ -67,10 +69,10 @@ public class StartGame : MonoBehaviour
         {
             play.text = "Pause";
 
-            obiekt_interface.active = true;
+            obiekt_pause.active = true;
             DisableGame();
         }
-        if(Input.GetKey(KeyCode.Space) && !obiekt_interface.active)
+        if(Input.GetKey(KeyCode.Space) && !obiekt_win_lose.active && !obiekt_pause.active)
         {
             play.text = "";
             obiekt_ball.GetComponent<MoveBall>().enabled = true;
@@ -79,17 +81,17 @@ public class StartGame : MonoBehaviour
         {
             play.text = "You Lose!";
             
-            obiekt_interface.active = true;
+            obiekt_win_lose.active = true;
             DisableGame();
         }
         if (Count_win == 0)
         {
             play.text = "You win!";
 
-            obiekt_interface.active = true;
+            obiekt_win_lose.active = true;
             DisableGame();
         }
-        if (obiekt_interface.active)
+        if (obiekt_win_lose.active)
             Cursor.visible = true;
         else Cursor.visible = false;
     }
