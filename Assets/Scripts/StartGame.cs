@@ -17,6 +17,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         count_win = 1;
         lost = false;
         obiekt_ball = GameObject.Find("ball");
@@ -69,7 +70,7 @@ public class StartGame : MonoBehaviour
             obiekt_interface.active = true;
             DisableGame();
         }
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && !obiekt_interface.active)
         {
             play.text = "";
             obiekt_ball.GetComponent<MoveBall>().enabled = true;
