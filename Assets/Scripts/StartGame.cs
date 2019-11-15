@@ -9,6 +9,7 @@ public class StartGame : MonoBehaviour
     public Text play;
     private bool lost;
     GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
+    GameObject obiekt_back;
     int count_win;
 
     public bool Lost { get => lost; set => lost = value; }
@@ -21,13 +22,23 @@ public class StartGame : MonoBehaviour
         Cursor.visible = false;
         count_win = 1;
         lost = false;
-        obiekt_ball = GameObject.Find("ball");
-        obiekt_pause = GameObject.Find("pause");
-        obiekt_win_lose = GameObject.Find("win/lose");
-        obiekt_win_lose.active = false;
-        obiekt_pause.active = false;
-        GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
-        
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            obiekt_ball = GameObject.Find("ball");
+            obiekt_pause = GameObject.Find("pause");
+            obiekt_win_lose = GameObject.Find("win/lose");
+            obiekt_win_lose.active = false;
+            obiekt_pause.active = false;
+            GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            obiekt_back = GameObject.FindGameObjectWithTag("Finish");
+            obiekt_back.active = false;
+            obiekt_pause = GameObject.FindGameObjectWithTag("Interface");
+        }
+
+
     }
 
     public void Resume()
@@ -36,6 +47,22 @@ public class StartGame : MonoBehaviour
 
         obiekt_pause.active = false;
         EnableGame();
+    }
+
+    public void Back()
+    {
+        play.text = "";
+        //GameObject.FindGameObjectWithTag("Finish").active = false;
+        obiekt_back.active = false;
+        obiekt_pause.active = true;
+    }
+
+    public void Instruction()
+    {
+        play.text = "Destroy all blocks to win. Watchout for the ball, cause it might get hard not to drop it. To move the bumpers use arrow keys or mouse.To start bumping press space or click left mouse.";
+        obiekt_pause.active = false;
+        //GameObject.FindGameObjectWithTag("Finish").active = true;
+        obiekt_back.active = true;
     }
 
     public void StartOver()
@@ -65,40 +92,51 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(count_win);
-        if(Input.GetKey(KeyCode.Escape))
+        if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            play.text = "Pause";
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                play.text = "Pause";
 
-            obiekt_pause.active = true;
-            DisableGame();
-        }
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
-        {
-            play.text = "";
-            obiekt_ball.GetComponent<MoveBall>().enabled = true;
-        }
-        if (lost)
-        {
-            play.text = "You Lose!";
-            
-            obiekt_win_lose.active = true;
-            DisableGame();
-        }
-        if (Count_win == 0)
-        {
-            play.text = "You win!";
+                obiekt_pause.active = true;
+                DisableGame();
+            }
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
+            {
+                play.text = "";
+                obiekt_ball.GetComponent<MoveBall>().enabled = true;
+            }
+            if (lost)
+            {
+                play.text = "You Lose!";
 
-            obiekt_win_lose.active = true;
-            DisableGame();
+                obiekt_win_lose.active = true;
+                DisableGame();
+            }
+            if (Count_win == 0)
+            {
+                play.text = "You win!";
+
+                obiekt_win_lose.active = true;
+                DisableGame();
+            }
         }
-        if (GameObject.FindGameObjectWithTag("Interface") == null)
+        
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+
+        }
+
+        if (GameObject.FindObjectOfType<Button>() == null)
             Cursor.visible = false;
         else Cursor.visible = true;
     }
+
+
 
     public void ChangeScene()
     {
         SceneManager.LoadScene(1);
     }
+
 }
