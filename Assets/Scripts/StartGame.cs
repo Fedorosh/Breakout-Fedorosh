@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     public Text play;
+    private static StartGame instance;
     private bool lost;
     GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
     GameObject obiekt_back;
@@ -19,6 +20,9 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else instance = this;
         Cursor.visible = false;
         count_win = 1;
         lost = false;
@@ -122,10 +126,10 @@ public class StartGame : MonoBehaviour
             }
         }
         
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
+        //if(SceneManager.GetActiveScene().buildIndex == 0)
+        //{
 
-        }
+        //}
 
         if (GameObject.FindObjectOfType<Button>() == null)
             Cursor.visible = false;

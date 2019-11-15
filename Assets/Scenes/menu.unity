@@ -248,7 +248,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173982021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1266048186}
@@ -972,7 +972,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128436434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -86}
+  m_LocalPosition: {x: 0, y: 0, z: -135}
   m_LocalScale: {x: 2.3067458, y: 2.0615146, z: 4.6964006}
   m_Children: []
   m_Father: {fileID: 65723465}
@@ -1014,14 +1014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Destroy all blocks to win. Watchout for the ball, cause it might get hard
-    not to drop it.
-
-
-    To move the bumpers use arrow keys or mouse. To start bumping press space or click
-    left mouse.
-
-'
+  m_Text: 
 --- !u!222 &2128436437
 CanvasRenderer:
   m_ObjectHideFlags: 0

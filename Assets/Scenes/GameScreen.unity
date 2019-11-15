@@ -3119,6 +3119,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: Press space or left click to start the epic adventure of your life
       objectReference: {fileID: 0}
+    - target: {fileID: 2000165443579430452, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1050793135646304140, guid: 60891b8c7283ae14ab5a9ae3bc1bc048,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4159,12 +4164,12 @@ PrefabInstance:
     - target: {fileID: 9056842121401906394, guid: 96566338685c8e9409fa5d430c8a169d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.16
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: 9056842121401906394, guid: 96566338685c8e9409fa5d430c8a169d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.93
+      value: -4.89
       objectReference: {fileID: 0}
     - target: {fileID: 9056842121401906394, guid: 96566338685c8e9409fa5d430c8a169d,
         type: 3}

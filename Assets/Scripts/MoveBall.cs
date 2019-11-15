@@ -20,6 +20,8 @@ public class MoveBall : Move
     void Update()
     {
         MoveBumper();
+        Debug.Log(decider_x);
+        Debug.Log(decider_y);
         ActualPosition();
     }
 
