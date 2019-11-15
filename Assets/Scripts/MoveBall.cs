@@ -20,8 +20,6 @@ public class MoveBall : Move
     void Update()
     {
         MoveBumper();
-        Debug.Log(decider_x);
-        Debug.Log(decider_y);
         ActualPosition();
     }
 
@@ -32,19 +30,24 @@ public class MoveBall : Move
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CapsuleCollider2D temp = (CapsuleCollider2D)collision.otherCollider;
-        
-            if(temp.direction == CapsuleDirection2D.Horizontal)
-             {
-                decider_x = -decider_x; 
-            
-             }
+        if(collision.gameObject.tag != "bonus")
+        {
+            CapsuleCollider2D temp = (CapsuleCollider2D)collision.otherCollider;
+
+
+            if (temp.direction == CapsuleDirection2D.Horizontal)
+            {
+                decider_x = -decider_x;
+
+            }
             else if (temp.direction == CapsuleDirection2D.Vertical)
             {
                 decider_y = -decider_y;
-                if(collision.gameObject.GetComponent<MoveBumpers>() != null)
-                decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
+                if (collision.gameObject.GetComponent<MoveBumpers>() != null)
+                    decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
             }
+        }
+        
     }
 
     override protected void ActualPosition()

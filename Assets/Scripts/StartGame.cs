@@ -84,6 +84,10 @@ public class StartGame : MonoBehaviour
         foreach (var x in GameObject.Find("Bumpers").GetComponentsInChildren<MoveBumpers>())
             x.enabled = true;
         GameObject.Find("ball").GetComponent<MoveBall>().enabled = true;
+        foreach (var x in GameObject.FindGameObjectsWithTag("bonus"))
+        {
+            x.gameObject.GetComponent<fallBonus>().enabled = true;
+        }
     }
 
     private void DisableGame()
@@ -91,6 +95,11 @@ public class StartGame : MonoBehaviour
         foreach (var x in GameObject.Find("Bumpers").GetComponentsInChildren<MoveBumpers>())
             x.enabled = false;
         GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
+        foreach (var x in GameObject.FindGameObjectsWithTag("bonus"))
+        {
+            x.gameObject.GetComponent<fallBonus>().enabled = false;
+        }
+      
     }
 
     // Update is called once per frame

@@ -16,6 +16,7 @@ TagManager:
   - bumper
   - pause
   - win/lose
+  - bonus
   layers:
   - Default
   - TransparentFX
