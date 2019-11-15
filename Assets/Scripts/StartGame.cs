@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class StartGame : MonoBehaviour
             obiekt_pause.active = true;
             DisableGame();
         }
-        if(Input.GetKey(KeyCode.Space) && !obiekt_win_lose.active && !obiekt_pause.active)
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
         {
             play.text = "";
             obiekt_ball.GetComponent<MoveBall>().enabled = true;
@@ -91,8 +92,13 @@ public class StartGame : MonoBehaviour
             obiekt_win_lose.active = true;
             DisableGame();
         }
-        if (obiekt_win_lose.active)
-            Cursor.visible = true;
-        else Cursor.visible = false;
+        if (GameObject.FindGameObjectWithTag("Interface") == null)
+            Cursor.visible = false;
+        else Cursor.visible = true;
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
