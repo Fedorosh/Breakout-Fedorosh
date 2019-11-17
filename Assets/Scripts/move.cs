@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Move : MonoBehaviour
 {
-    protected Rigidbody2D bumper;
+    protected MeshCollider bumper;
+    //protected MeshCollider bumper1;
     public float speed;
     protected float x;
     protected float y;
@@ -19,17 +20,17 @@ public abstract class Move : MonoBehaviour
     {
         isCollidedLeft = false;
         isCollidedRight = false;
-        bumper = GetComponent<Rigidbody2D>();
+        bumper = GetComponent<MeshCollider>();
         ActualPosition();
-        y = bumper.transform.position.y;
+        y = bumper.gameObject.transform.position.y;
     }
 
     virtual protected void MoveBumper(float sign = 1.0f)
     {
-        bumper.transform.position = new Vector2(x + (speed * sign), y);
+        bumper.gameObject.transform.position = new Vector2(x + (speed * sign), y);
     }
     virtual protected void ActualPosition()
     {
-        x = bumper.transform.position.x;
+        x = bumper.gameObject.transform.position.x;
     }
 }
