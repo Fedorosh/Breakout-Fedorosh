@@ -10,7 +10,7 @@ public class MoveBall : Move
     // Start is called before the first frame update
     protected override void Start()
     {
-        bumper = GetComponent<Rigidbody2D>();
+        bumper = GetComponent<Rigidbody>();
         decider_x = (float)sign.plus;
         decider_y = decider_x;
         ActualPosition();
@@ -29,24 +29,24 @@ public class MoveBall : Move
         bumper.transform.position = new Vector2(x + (speed * decider_x), y + (speed * decider_y));
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != "bonus")
         {
-            CapsuleCollider2D temp = (CapsuleCollider2D)collision.otherCollider;
+            CapsuleCollider temp = (CapsuleCollider)collision.other;
+            decider_x = -decider_x;
+            decider_y = -decider_y;
+            //if (temp.direction == CapsuleDirection.Horizontal)
+            //{
+            //    decider_x = -decider_x;
 
-
-            if (temp.direction == CapsuleDirection2D.Horizontal)
-            {
-                decider_x = -decider_x;
-
-            }
-            else if (temp.direction == CapsuleDirection2D.Vertical)
-            {
-                decider_y = -decider_y;
-                if (collision.gameObject.GetComponent<MoveBumpers>() != null)
-                    decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
-            }
+            //}
+            //else if (temp.direction == CapsuleDirection.Vertical)
+            //{
+            //    decider_y = -decider_y;
+            //    if (collision.gameObject.GetComponent<MoveBumpers>() != null)
+            //        decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
+            //}
         }
         
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Move : MonoBehaviour
 {
-    protected Rigidbody2D bumper;
+    protected Rigidbody bumper;
     //protected MeshCollider bumper1;
     public float speed;
     protected float x;
@@ -20,7 +20,7 @@ public abstract class Move : MonoBehaviour
     {
         isCollidedLeft = false;
         isCollidedRight = false;
-        bumper = GetComponent<Rigidbody2D>();
+        bumper = GetComponent<Rigidbody>();
         ActualPosition();
         y = bumper.transform.position.y;
     }

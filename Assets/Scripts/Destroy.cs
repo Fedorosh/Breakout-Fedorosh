@@ -13,11 +13,11 @@ public class Destroy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         GameObject.Find("GameController").GetComponent<StartGame>().Count_win = 0;
 
-        collision.otherCollider.gameObject.active = false;
+        collision.other.gameObject.active = false;
 
 
         foreach (var x in GameObject.FindGameObjectsWithTag("Block"))
@@ -29,7 +29,7 @@ public class Destroy : MonoBehaviour
         //int r = rand.Next(5);
         //Debug.Log(r);
         //if(r == 2)
-        Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
+        Instantiate(prefab, collision.other.transform.position, Quaternion.identity);
 
     }
     // Update is called once per fra

@@ -16,7 +16,7 @@ public class fallBonus : MonoBehaviour
         bonus.transform.Translate(0, -0.05f, 0);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.gameObject.tag == "bumper")
         {

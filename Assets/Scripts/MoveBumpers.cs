@@ -15,7 +15,7 @@ public class MoveBumpers : Move
 
         Translation = Input.GetAxis("Mouse X");
 
-        //float constrain = (Math.Abs(Translation) > 3.0f) ? (Translation < 0) ? -3.0f : 3.0f : Translation;
+        float constrain = (Math.Abs(Translation) > 3.0f) ? (Translation < 0) ? -3.0f : 3.0f : Translation;
 
         Debug.Log(Translation);
         if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
@@ -27,13 +27,13 @@ public class MoveBumpers : Move
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "wallleft") isCollidedLeft = true;
         if (collision.collider.tag == "wallright") isCollidedRight = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.tag == "wallright" ) isCollidedRight = false;
         if (collision.collider.tag == "wallleft") isCollidedLeft = false;

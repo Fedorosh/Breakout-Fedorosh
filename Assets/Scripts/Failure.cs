@@ -10,7 +10,7 @@ public class Failure : MonoBehaviour
         obiekt = GameObject.Find("GameController");
     }
     // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "X_col" || other.tag == "Y_col")
         {
