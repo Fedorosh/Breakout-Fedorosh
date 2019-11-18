@@ -15,7 +15,7 @@ public class MoveBumpers : Move
 
         Translation = Input.GetAxis("Mouse X");
 
-        float constrain = (Math.Abs(Translation) > 3.0f) ? (Translation < 0) ? -3.0f : 3.0f : Translation;
+        //float constrain = (Math.Abs(Translation) > 3.0f) ? (Translation < 0) ? -3.0f : 3.0f : Translation;
 
         Debug.Log(Translation);
         if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
