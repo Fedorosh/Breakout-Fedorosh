@@ -87,6 +87,7 @@ public class StartGame : MonoBehaviour
         foreach (var x in GameObject.FindGameObjectsWithTag("bonus"))
         {
             x.gameObject.GetComponent<fallBonus>().enabled = true;
+            x.gameObject.GetComponent<MeasureTime>().enabled = true;
         }
     }
 
@@ -98,7 +99,9 @@ public class StartGame : MonoBehaviour
         foreach (var x in GameObject.FindGameObjectsWithTag("bonus"))
         {
             x.gameObject.GetComponent<fallBonus>().enabled = false;
+            x.gameObject.GetComponent<MeasureTime>().enabled = false;
         }
+        
       
     }
 

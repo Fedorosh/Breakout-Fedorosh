@@ -30,27 +30,30 @@ public class Destroy : MonoBehaviour
         int r = 2;//rand.Next(5);
         if (r == 2)
         {
+            GameObject pre = Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
             rand = new System.Random();
             r = rand.Next(0,5);
-            prefab.GetComponent<fallBonus>().Color = r;
-            Debug.Log(r);
+            pre.GetComponent<fallBonus>().Color = r;
             switch (r)
             {
                 case (int)Colors.blue:
-                    prefab.GetComponent<SpriteRenderer>().color = Color.blue;
+                    pre.GetComponent<SpriteRenderer>().color = Color.blue;
                     break;
                 case (int)Colors.orange:
+                    pre.GetComponent<SpriteRenderer>().color = Color.green;
                     break;
                 case (int)Colors.red:
+                    pre.GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 case (int)Colors.white:
+                    pre.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
                 case (int)Colors.yellow:
+                    pre.GetComponent<SpriteRenderer>().color = Color.yellow;
                     break;
 
 
             }
-            Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
 
         }
 

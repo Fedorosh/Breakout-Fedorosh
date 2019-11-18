@@ -43,8 +43,10 @@ public class MeasureTime : MonoBehaviour
                     x.transform.localScale -= new Vector3(10, 0, 0);
                 break;
             case (int)Colors.orange:
+                GameObject.FindGameObjectWithTag("X_col").transform.localScale -= new Vector3(10, 10);
                 break;
             case (int)Colors.red:
+                GameObject.Find("bumperUp").GetComponent<MoveBall>().speed *= -1;
                 break;
             case (int)Colors.white:
                 break;
