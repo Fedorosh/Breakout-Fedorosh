@@ -6,25 +6,52 @@ public class MeasureTime : MonoBehaviour
 {
     bool timerOn;
     float time;
+
+    public bool TimerOn { get => timerOn; set => timerOn = value; }
+
+    private enum Colors : int { blue, white, red, yellow, orange }
+
     // Start is called before the first frame update
     void Start()
     {
         time = 0.0f;
-        timerOn = false;
+        TimerOn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timerOn)
+        if(TimerOn)
         {
             time += Time.deltaTime;
             int seconds = (int)(time % 60);
             if(seconds == 10)
             {
-                timerOn = false;
-
+                DisableEffect();
+                TimerOn = false;
+                gameObject.active = false;
             }
+        }
+    }
+
+    void DisableEffect()
+    {
+        switch (GetComponent<fallBonus>().Color)
+        {
+            case (int)Colors.blue:
+                foreach (var x in GameObject.FindGameObjectsWithTag("bumper"))
+                    x.transform.localScale -= new Vector3(10, 0, 0);
+                break;
+            case (int)Colors.orange:
+                break;
+            case (int)Colors.red:
+                break;
+            case (int)Colors.white:
+                break;
+            case (int)Colors.yellow:
+                break;
+
+
         }
     }
 }
