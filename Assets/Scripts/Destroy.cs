@@ -25,11 +25,11 @@ public class Destroy : MonoBehaviour
             GameObject.Find("GameController").GetComponent<StartGame>().Count_win++;
 
         }
-        //rand = new System.Random();
-        //int r = rand.Next(5);
-        //Debug.Log(r);
-        //if(r == 2)
-        Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
+        rand = new System.Random();
+        int r = rand.Next(5);
+        Debug.Log(r);
+        if (r == 2)
+            Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
 
     }
     // Update is called once per fra

@@ -145,8 +145,6 @@ public class StartGame : MonoBehaviour
         else Cursor.visible = true;
     }
 
-
-
     public void ChangeScene()
     {
         SceneManager.LoadScene(1);
