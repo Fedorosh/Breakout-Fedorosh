@@ -6,7 +6,6 @@ public class MoveBall : Move
 {
     float decider_x,decider_y;
     CapsuleCollider2D x_col, y_col;
-    Rigidbody2D bumper;
 
     // Start is called before the first frame update
     protected override void Start()

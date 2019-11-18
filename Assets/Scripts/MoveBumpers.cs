@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MoveBumpers : Move
 {
@@ -14,23 +15,25 @@ public class MoveBumpers : Move
 
         Translation = Input.GetAxis("Mouse X");
 
+        float constrain = (Math.Abs(Translation) > 3.0f) ? (Translation < 0) ? -3.0f : 3.0f : Translation;
 
+        Debug.Log(Translation);
         if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
-            bumper.gameObject.transform.Translate(0, 0, 0);
+            bumper.transform.Translate(0, 0, 0);
         else
-            bumper.gameObject.transform.Translate(Translation * speed, 0, 0);
+            bumper.transform.Translate((constrain) * speed, 0, 0);
 
         ActualPosition();
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "wallleft") isCollidedLeft = true;
         if (collision.collider.tag == "wallright") isCollidedRight = true;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "wallright" ) isCollidedRight = false;
         if (collision.collider.tag == "wallleft") isCollidedLeft = false;
