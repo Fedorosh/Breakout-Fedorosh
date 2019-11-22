@@ -39,7 +39,7 @@ public class fallBonus : MonoBehaviour
         {
             case (int)Colors.blue:
                 foreach (var x in GameObject.FindGameObjectsWithTag("bumper"))
-                    x.transform.localScale += new Vector3(10, 0, 0);
+                    x.transform.localScale = x.transform.localScale + new Vector3(10, 0, 0);
                 break;
             case (int)Colors.orange:
                 GameObject.FindGameObjectWithTag("X_col").transform.localScale += new Vector3(10,10);

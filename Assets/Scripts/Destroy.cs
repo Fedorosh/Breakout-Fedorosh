@@ -8,11 +8,6 @@ public class Destroy : MonoBehaviour
     private enum Colors : int { blue, white, red, yellow, orange }
     public GameObject prefab;
     private System.Random rand;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,18 +33,28 @@ public class Destroy : MonoBehaviour
             {
                 case (int)Colors.blue:
                     pre.GetComponent<SpriteRenderer>().color = Color.blue;
+                    if (pre.GetComponent<MeasureTime>().TimerOn)
+                        pre.GetComponent<MeasureTime>().Time = 0.0f;
                     break;
                 case (int)Colors.orange:
                     pre.GetComponent<SpriteRenderer>().color = Color.green;
+                    if (pre.GetComponent<MeasureTime>().TimerOn)
+                        pre.GetComponent<MeasureTime>().Time = 0.0f;
                     break;
                 case (int)Colors.red:
                     pre.GetComponent<SpriteRenderer>().color = Color.red;
+                    if (pre.GetComponent<MeasureTime>().TimerOn)
+                        pre.GetComponent<MeasureTime>().Time = 0.0f;
                     break;
                 case (int)Colors.white:
                     pre.GetComponent<SpriteRenderer>().color = Color.white;
+                    if (pre.GetComponent<MeasureTime>().TimerOn)
+                        pre.GetComponent<MeasureTime>().Time = 0.0f;
                     break;
                 case (int)Colors.yellow:
                     pre.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    if (pre.GetComponent<MeasureTime>().TimerOn)
+                        pre.GetComponent<MeasureTime>().Time = 0.0f;
                     break;
 
 
@@ -57,10 +62,5 @@ public class Destroy : MonoBehaviour
 
         }
 
-    }
-    // Update is called once per fra
-    void Update()
-    {
-        
     }
 }

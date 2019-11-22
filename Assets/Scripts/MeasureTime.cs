@@ -8,13 +8,14 @@ public class MeasureTime : MonoBehaviour
     float time;
 
     public bool TimerOn { get => timerOn; set => timerOn = value; }
+    public float Time { get => time; set => time = value; }
 
     private enum Colors : int { blue, white, red, yellow, orange }
 
     // Start is called before the first frame update
     void Start()
     {
-        time = 0.0f;
+        Time = 0.0f;
         TimerOn = false;
     }
 
@@ -23,8 +24,8 @@ public class MeasureTime : MonoBehaviour
     {
         if(TimerOn)
         {
-            time += Time.deltaTime;
-            int seconds = (int)(time % 60);
+            Time += UnityEngine.Time.deltaTime;
+            int seconds = (int)(Time % 60);
             if(seconds == 10)
             {
                 DisableEffect();
@@ -40,7 +41,7 @@ public class MeasureTime : MonoBehaviour
         {
             case (int)Colors.blue:
                 foreach (var x in GameObject.FindGameObjectsWithTag("bumper"))
-                    x.transform.localScale -= new Vector3(10, 0, 0);
+                    x.transform.localScale = x.transform.localScale - new Vector3(10, 0, 0);
                 break;
             case (int)Colors.orange:
                 GameObject.FindGameObjectWithTag("X_col").transform.localScale -= new Vector3(10, 10);
