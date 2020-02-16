@@ -22,7 +22,7 @@ public class Destroy : MonoBehaviour
 
         }
         rand = new System.Random();
-        int r = 2;//rand.Next(5);
+        int r = rand.Next(5);
         if (r == 2)
         {
             GameObject pre = Instantiate(prefab, collision.otherCollider.transform.position, Quaternion.identity);
