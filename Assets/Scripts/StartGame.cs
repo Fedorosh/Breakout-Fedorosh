@@ -105,18 +105,26 @@ public class StartGame : MonoBehaviour
       
     }
 
+    public void Pause()
+    {
+        play.text = "Pause";
+
+                obiekt_pause.active = true;
+                DisableGame();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                play.text = "Pause";
+            // if (Input.GetKey(KeyCode.Escape))
+            // {
+            //     play.text = "Pause";
 
-                obiekt_pause.active = true;
-                DisableGame();
-            }
+            //     obiekt_pause.active = true;
+            //     DisableGame();
+            // }
             if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
             {
                 play.text = "";
