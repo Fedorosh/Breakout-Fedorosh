@@ -13,6 +13,9 @@ public class StartGame : MonoBehaviour
     GameObject obiekt_back;
     int count_win;
 
+    [SerializeField] Button one_player;
+    [SerializeField] Button two_players;
+
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
 
@@ -59,6 +62,16 @@ public class StartGame : MonoBehaviour
         //GameObject.FindGameObjectWithTag("Finish").active = false;
         obiekt_back.active = false;
         obiekt_pause.active = true;
+        one_player.gameObject.active = false;
+        two_players.gameObject.active = false;
+    }
+
+    public void SelectType()
+    {
+        one_player.gameObject.active = true;
+        two_players.gameObject.active = true;
+        obiekt_back.active = true;
+        obiekt_pause.active = false;
     }
 
     public void Instruction()
