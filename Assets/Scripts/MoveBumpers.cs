@@ -1,14 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
+using UnityEngine.UI;
 
 public class MoveBumpers : Move
 {
 
     public BoxCollider2D pool;
     Touch touch;
+    [SerializeField] MoveMover steer;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    
+
+    
     // Update is called once per frame
     void Update()
     {
@@ -23,15 +35,16 @@ public class MoveBumpers : Move
                     //Translation = Input.GetAxis("Mouse X");
                     // dotyk.
                     //if(Input.GetTouch(0) == null)
+                    if(steer.IsClicked)
                     for(int i = 0; i < Input.touchCount; i++)
                     {
                         Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-                        if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
-                        {
+                        // if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
+                        // {
                             bumperPosition.y = transform.position.y;
                             bumperPosition.z = transform.position.z;
                             transform.position = bumperPosition;
-                        }
+                        // }
                         // if(transform.position.y < bumperPosition.y && transform.position.y < 0)
                         // {
                         //     bumperPosition.y = transform.position.y;
@@ -57,6 +70,8 @@ public class MoveBumpers : Move
         // ActualPosition();
 
     }
+    
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

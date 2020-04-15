@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Move : MonoBehaviour
 {
@@ -14,8 +15,7 @@ public abstract class Move : MonoBehaviour
     // public Camera kamera;
     private float translation;
 
-
-
+    
     public float Translation { get => translation; set => translation = value; }
 
     protected virtual void Start()
