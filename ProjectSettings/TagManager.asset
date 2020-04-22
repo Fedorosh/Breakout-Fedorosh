@@ -17,6 +17,7 @@ TagManager:
   - pause
   - win/lose
   - bonus
+  - steer
   layers:
   - Default
   - TransparentFX

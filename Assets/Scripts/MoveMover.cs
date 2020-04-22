@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class MoveMover : Button
 {
     bool isClicked = false;
+
+    private MoveMover steer;
+
     // Start is called before the first frame update
     public override void OnPointerDown(PointerEventData eventData)
     {
@@ -16,22 +19,40 @@ public class MoveMover : Button
     {
         isClicked = false;
     }
+
     public bool IsClicked {
         get {return isClicked;}
         set {isClicked = value;}
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        
+        foreach(var x in GameObject.FindGameObjectsWithTag("steer"))
+        {
+            if(x.GetComponent<MoveMover>() != this)
+            steer = x.GetComponent<MoveMover>();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        if(steer == this) Debug.Log("to ten sam");
         if(isClicked)
         for(int i = 0; i < Input.touchCount; i++)
                     {
+                        if(!steer.isClicked)
+                        {
                         Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-                        // if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
+
                             bumperPosition.y = transform.position.y;
                             bumperPosition.z = transform.position.z;
                             transform.position = bumperPosition;
+                        }
+                        
+                        // if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
+                            
 
                         // if(transform.position.y < bumperPosition.y && transform.position.y < 0)
                         // {

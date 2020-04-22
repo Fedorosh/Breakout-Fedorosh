@@ -36,22 +36,20 @@ public class MoveBumpers : Move
                     // dotyk.
                     //if(Input.GetTouch(0) == null)
                     if(steer.IsClicked)
-                    for(int i = 0; i < Input.touchCount; i++)
-                    {
-                        Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                            transform.position = new Vector3(steer.transform.position.x,transform.position.y,transform.position.z);
+                    // for(int i = 0; i < Input.touchCount; i++)
+                    // {
+                        //Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);     
                         // if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
                         // {
-                            bumperPosition.y = transform.position.y;
-                            bumperPosition.z = transform.position.z;
-                            transform.position = bumperPosition;
-                        // }
+                            
                         // if(transform.position.y < bumperPosition.y && transform.position.y < 0)
                         // {
                         //     bumperPosition.y = transform.position.y;
                         //     bumperPosition.z = transform.position.z;
                         //     transform.position = bumperPosition;
                         // }
-                    }
+                    // }
                     
                     
                     
