@@ -303,7 +303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: steer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 990283037}
     - target: {fileID: 6492229125820722694, guid: da00ca05f40b80d4f9cde1a7dfbdd45a,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -879,10 +879,10 @@ RectTransform:
   m_Father: {fileID: 2100707164}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -67, y: 279.7}
-  m_SizeDelta: {x: 36.69, y: 43.72}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -58.9, y: -42.54}
+  m_SizeDelta: {x: 50, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518592440
 MonoBehaviour:
@@ -1653,10 +1653,10 @@ RectTransform:
   m_Father: {fileID: 2100707164}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -67, y: -594}
-  m_SizeDelta: {x: 36.69, y: 43.71997}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -67, y: 40}
+  m_SizeDelta: {x: 50, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990283037
 MonoBehaviour:
@@ -4606,7 +4606,7 @@ PrefabInstance:
         type: 3}
       propertyPath: steer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 518592440}
     - target: {fileID: 6492229125820722694, guid: da00ca05f40b80d4f9cde1a7dfbdd45a,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -4996,7 +4996,7 @@ PrefabInstance:
     - target: {fileID: 9056842121401906390, guid: 96566338685c8e9409fa5d430c8a169d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9056842121401906390, guid: 96566338685c8e9409fa5d430c8a169d,
         type: 3}

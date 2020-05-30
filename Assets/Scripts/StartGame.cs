@@ -15,6 +15,7 @@ public class StartGame : MonoBehaviour
 
     [SerializeField] Button one_player;
     [SerializeField] Button two_players;
+    [SerializeField] GameObject typeOfGame;
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
@@ -23,6 +24,8 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        typeOfGame = GameObject.Find("TypeOfGame");
+        Debug.Log(typeOfGame.GetComponent<TypeOfGame>().isTwoPlayers);
         if (instance != null && instance != this)
             Destroy(this);
         else instance = this;

@@ -37,35 +37,35 @@ public class MoveBumpers : Move
                     //if(Input.GetTouch(0) == null)
                     if(steer.IsClicked)
                             transform.position = new Vector3(steer.transform.position.x,transform.position.y,transform.position.z);
-                    // for(int i = 0; i < Input.touchCount; i++)
-                    // {
-                        //Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);     
-                        // if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
-                        // {
-                            
-                        // if(transform.position.y < bumperPosition.y && transform.position.y < 0)
-                        // {
-                        //     bumperPosition.y = transform.position.y;
-                        //     bumperPosition.z = transform.position.z;
-                        //     transform.position = bumperPosition;
-                        // }
-                    // }
-                    
-                    
-                    
-                    
+        //for (int i = 0; i < Input.touchCount; i++)
+        //{
+        //    Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+        //    if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
+        //    {
 
-        // float constrain = (Math.Abs(Translation) > 4.0f) ? (Translation < 0) ? -4.0f : 4.0f : Translation;
-
-        // if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
-        //     bumper.transform.Translate(0, 0, 0);
-        // else
-        //     bumper.transform.Translate((constrain) * speed, 0, 0);
+        //        if (transform.position.y < bumperPosition.y && transform.position.y < 0)
+        //        {
+        //            bumperPosition.y = transform.position.y;
+        //            bumperPosition.z = transform.position.z;
+        //            transform.position = bumperPosition;
+        //        }
+        //    }
 
 
-        // }
 
-        // ActualPosition();
+
+
+            // float constrain = (Math.Abs(Translation) > 4.0f) ? (Translation < 0) ? -4.0f : 4.0f : Translation;
+
+            // if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
+            //     bumper.transform.Translate(0, 0, 0);
+            // else
+            //     bumper.transform.Translate((constrain) * speed, 0, 0);
+
+
+             //}
+
+//            ActualPosition();
 
     }
     
