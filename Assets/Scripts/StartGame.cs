@@ -13,25 +13,29 @@ public class StartGame : MonoBehaviour
     GameObject obiekt_back;
     int count_win;
 
+    public GameObject bumperUp;
+    public GameObject hoveUp;
+    public GameObject steerUp;
+
     [SerializeField] Button one_player;
     [SerializeField] Button two_players;
-    [SerializeField] GameObject typeOfGame;
+    [SerializeField] TypeOfGame typeOfGame;
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
 
-
     // Start is called before the first frame update
     void Start()
     {
-        typeOfGame = GameObject.Find("TypeOfGame");
-        Debug.Log(typeOfGame.GetComponent<TypeOfGame>().isTwoPlayers);
+        typeOfGame = GameObject.Find("TypeOfGame").GetComponent<TypeOfGame>();
         if (instance != null && instance != this)
             Destroy(this);
         else instance = this;
         Cursor.visible = false;
         count_win = 1;
         lost = false;
+
+        //Check if the game should start
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             obiekt_ball = GameObject.Find("ball");
@@ -40,13 +44,25 @@ public class StartGame : MonoBehaviour
             obiekt_win_lose.active = false;
             obiekt_pause.active = false;
             GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
+            //Check if it's only one player
+            if (!typeOfGame.isTwoPlayers)
+            {
+                bumperUp.SetActive(false);
+                hoveUp.SetActive(true);
+                steerUp.SetActive(false);
+            }
         }
+        //Check if the scene is menu
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             obiekt_back = GameObject.FindGameObjectWithTag("Finish");
             obiekt_back.active = false;
             obiekt_pause = GameObject.FindGameObjectWithTag("Interface");
         }
+
+        
+
+
 
 
     }
