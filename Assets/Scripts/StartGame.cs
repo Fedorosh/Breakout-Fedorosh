@@ -21,12 +21,15 @@ public class StartGame : MonoBehaviour
     [SerializeField] Button two_players;
     [SerializeField] TypeOfGame typeOfGame;
 
+    public Canvas canvas;
+
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(Screen.width, Screen.height);
         typeOfGame = GameObject.Find("TypeOfGame").GetComponent<TypeOfGame>();
         if (instance != null && instance != this)
             Destroy(this);
