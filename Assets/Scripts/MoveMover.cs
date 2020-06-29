@@ -9,7 +9,8 @@ public class MoveMover : Button
     bool isClicked = false;
 
     Vector3 bumperPosition;
-    private int t;
+    
+    public int t = 0;
 
     private MoveMover steer;
 
@@ -41,21 +42,27 @@ public class MoveMover : Button
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("LOCAL BUMPER " + gameObject.name + " " + transform.localPosition);
+        Debug.Log("GLOBAL BUMPER " + gameObject.name + " " + transform.position);
         //if(steer == this) Debug.Log("to ten sam");
         if (isClicked)
         //{
         {
-            if (!steer.isClicked)
-                bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                
+                bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                Debug.Log("TOUCH " + gameObject.name + " " + transform.position);
+                if ((bumperPosition.y > (transform.position.y - transform.localScale.y) && transform.position.y > 0) || (bumperPosition.y < (transform.position.y + transform.localScale.y) && transform.position.y < 0))
 
+                    {
+                    bumperPosition.y = transform.position.y;
+                    bumperPosition.z = transform.position.z;
+                    transform.position = bumperPosition;
+                }
 
-
-
-            bumperPosition.y = transform.position.y;
-            bumperPosition.z = transform.position.z;
-            transform.position = bumperPosition;
+            }
 
         }
         //    t = Input.touchCount;
