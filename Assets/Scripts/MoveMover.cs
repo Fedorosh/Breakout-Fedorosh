@@ -43,8 +43,7 @@ public class MoveMover : Button
     void Update()
     {
 
-        Debug.Log("LOCAL BUMPER " + gameObject.name + " " + transform.localPosition);
-        Debug.Log("GLOBAL BUMPER " + gameObject.name + " " + transform.position);
+      
         //if(steer == this) Debug.Log("to ten sam");
         if (isClicked)
         //{
@@ -53,7 +52,6 @@ public class MoveMover : Button
             {
                 
                 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-                Debug.Log("TOUCH " + gameObject.name + " " + transform.position);
                 if ((bumperPosition.y > (transform.position.y - transform.localScale.y) && transform.position.y > 0) || (bumperPosition.y < (transform.position.y + transform.localScale.y) && transform.position.y < 0))
 
                     {

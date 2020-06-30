@@ -18,58 +18,30 @@ public class MoveBumpers : Move
         base.Start();
     }
 
-    
-
-    
     // Update is called once per frame
     void Update()
     {
         //Keyboard controls for PC
-        // if (Input.GetKey("right") && !Input.GetKey("left") && !isCollidedRight) MoveBumper((float)sign.plus);
-        // if (Input.GetKey("left") && !Input.GetKey("right") && !isCollidedLeft) MoveBumper((float)sign.minus);
+        //if (Input.GetKey("right") && !Input.GetKey("left") && !isCollidedRight) MoveBumper((float)sign.plus);
+        //if (Input.GetKey("left") && !Input.GetKey("right") && !isCollidedLeft) MoveBumper((float)sign.minus);
 
-        // Debug.Log(Input.mousePosition);
-
-        // if((Input.mousePosition.y > bumper.transform.position.y && bumper.transform.position.y > 0) || (Input.mousePosition.y < bumper.transform.position.y && bumper.transform.position.y < 0))
-        // {
-                    //Translation = Input.GetAxis("Mouse X");
-                    // dotyk.
-                    //if(Input.GetTouch(0) == null)
-                    if(steer.IsClicked)
+#if UNITY_ANDROID && !UNITY_EDITOR
+        if (steer.IsClicked)
+                        {
+                            Translation = CountTranslation(transform.position.x, steer.transform.position.x);
+                                
                             transform.position = new Vector3(steer.transform.position.x,transform.position.y,transform.position.z);
-        //for (int i = 0; i < Input.touchCount; i++)
-        //{
-        //    Vector3 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-        //    if ((bumperPosition.y > transform.position.y && transform.position.y > 0) || (bumperPosition.y < transform.position.y && transform.position.y < 0))
-        //    {
+                        }
+#else
 
-        //        if (transform.position.y < bumperPosition.y && transform.position.y < 0)
-        //        {
-        //            bumperPosition.y = transform.position.y;
-        //            bumperPosition.z = transform.position.z;
-        //            transform.position = bumperPosition;
-        //        }
-        //    }
+#endif
 
-
-
-
-
-            // float constrain = (Math.Abs(Translation) > 4.0f) ? (Translation < 0) ? -4.0f : 4.0f : Translation;
-
-            // if ((isCollidedLeft && Translation < 0) || (isCollidedRight && Translation > 0))
-            //     bumper.transform.Translate(0, 0, 0);
-            // else
-            //     bumper.transform.Translate((constrain) * speed, 0, 0);
-
-
-           // }
-
-            //            ActualPosition();
-
-        }
+    }
     
-    
+    private float CountTranslation(float x1, float x2)
+    {
+        return x1 > x2 ? -Math.Abs(x1 - x2) : Math.Abs(x1 - x2);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

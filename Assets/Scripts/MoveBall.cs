@@ -45,7 +45,10 @@ public class MoveBall : Move
             {
                 decider_y = -decider_y;
                 if (collision.gameObject.GetComponent<MoveBumpers>() != null)
+                {
                     decider_x += collision.gameObject.GetComponent<MoveBumpers>().Translation;
+                    Debug.Log("exists");
+                }
             }
         }
         
