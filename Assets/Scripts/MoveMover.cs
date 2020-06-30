@@ -48,8 +48,14 @@ public class MoveMover : Button
         if (isClicked)
         //{
         {
+#if UNITY_EDITOR
+
+            float translation = Input.GetAxis("Mouse X");
+            transform.Translate(new Vector3(translation,0,0));
+#else
             for (int i = 0; i < Input.touchCount; i++)
             {
+
                 
                 bumperPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
                 if ((bumperPosition.y > (transform.position.y - transform.localScale.y) && transform.position.y > 0) || (bumperPosition.y < (transform.position.y + transform.localScale.y) && transform.position.y < 0))
@@ -61,6 +67,7 @@ public class MoveMover : Button
                 }
 
             }
+#endif
 
         }
         //    t = Input.touchCount;

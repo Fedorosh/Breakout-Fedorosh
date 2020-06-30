@@ -25,16 +25,13 @@ public class MoveBumpers : Move
         //if (Input.GetKey("right") && !Input.GetKey("left") && !isCollidedRight) MoveBumper((float)sign.plus);
         //if (Input.GetKey("left") && !Input.GetKey("right") && !isCollidedLeft) MoveBumper((float)sign.minus);
 
-#if UNITY_ANDROID && !UNITY_EDITOR
         if (steer.IsClicked)
                         {
                             Translation = CountTranslation(transform.position.x, steer.transform.position.x);
                                 
                             transform.position = new Vector3(steer.transform.position.x,transform.position.y,transform.position.z);
                         }
-#else
 
-#endif
 
     }
     
