@@ -29,9 +29,6 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(Screen.width, Screen.height);
-#endif
         typeOfGame = GameObject.Find("TypeOfGame").GetComponent<TypeOfGame>();
         if (instance != null && instance != this)
             Destroy(this);
@@ -74,7 +71,7 @@ public class StartGame : MonoBehaviour
 
     public void Resume()
     {
-        play.text = "";
+        play.gameObject.SetActive(false);
 
         obiekt_pause.active = false;
         EnableGame();
@@ -82,7 +79,7 @@ public class StartGame : MonoBehaviour
 
     public void Back()
     {
-        play.text = "";
+        play.gameObject.SetActive(false); 
         //GameObject.FindGameObjectWithTag("Finish").active = false;
         obiekt_back.active = false;
         obiekt_pause.active = true;
@@ -100,7 +97,7 @@ public class StartGame : MonoBehaviour
 
     public void Instruction()
     {
-        play.text = "Destroy all blocks to win. Watchout for the ball, cause it might get hard not to drop it. To move the bumpers use arrow keys or mouse.To start bumping press space or click left mouse.";
+        play.gameObject.SetActive(true);
         obiekt_pause.active = false;
         //GameObject.FindGameObjectWithTag("Finish").active = true;
         obiekt_back.active = true;
@@ -144,6 +141,7 @@ public class StartGame : MonoBehaviour
 
     public void Pause()
     {
+        play.gameObject.SetActive(true);
         play.text = "Pause";
 
                 obiekt_pause.active = true;
@@ -164,11 +162,12 @@ public class StartGame : MonoBehaviour
             // }
             if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
             {
-                play.text = "";
+                play.gameObject.SetActive(false);
                 obiekt_ball.GetComponent<MoveBall>().enabled = true;
             }
             if (lost)
             {
+                play.gameObject.SetActive(true);
                 play.text = "You Lose!";
 
                 obiekt_win_lose.active = true;
@@ -176,6 +175,7 @@ public class StartGame : MonoBehaviour
             }
             if (Count_win == 0)
             {
+                play.gameObject.SetActive(true);
                 play.text = "You win!";
 
                 obiekt_win_lose.active = true;
