@@ -43,8 +43,8 @@ public class StartGame : MonoBehaviour
             obiekt_ball = GameObject.Find("ball");
             obiekt_pause = GameObject.Find("pause");
             obiekt_win_lose = GameObject.Find("win/lose");
-            obiekt_win_lose.active = false;
-            obiekt_pause.active = false;
+            obiekt_win_lose.SetActive(false);
+            obiekt_pause.SetActive(false);
             GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
             //Check if it's only one player
             if (!typeOfGame.isTwoPlayers)
@@ -58,7 +58,8 @@ public class StartGame : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             obiekt_back = GameObject.FindGameObjectWithTag("Finish");
-            obiekt_back.active = false;
+            if(obiekt_back != null)
+            obiekt_back.SetActive(false);
             obiekt_pause = GameObject.FindGameObjectWithTag("Interface");
         }
 
@@ -73,7 +74,7 @@ public class StartGame : MonoBehaviour
     {
         play.gameObject.SetActive(false);
 
-        obiekt_pause.active = false;
+        obiekt_pause.SetActive(false); 
         EnableGame();
     }
 
@@ -81,31 +82,31 @@ public class StartGame : MonoBehaviour
     {
         play.gameObject.SetActive(false); 
         //GameObject.FindGameObjectWithTag("Finish").active = false;
-        obiekt_back.active = false;
-        obiekt_pause.active = true;
-        one_player.gameObject.active = false;
-        two_players.gameObject.active = false;
+        obiekt_back.SetActive(false);
+        obiekt_pause.SetActive(true);
+        one_player.gameObject.SetActive(false);
+        two_players.gameObject.SetActive(false);
     }
 
     public void SelectType()
     {
-        one_player.gameObject.active = true;
-        two_players.gameObject.active = true;
-        obiekt_back.active = true;
-        obiekt_pause.active = false;
+        one_player.gameObject.SetActive(true);
+        two_players.gameObject.SetActive(true);
+        obiekt_back.SetActive(true);
+        obiekt_pause.SetActive(false);
     }
 
     public void Instruction()
     {
         play.gameObject.SetActive(true);
-        obiekt_pause.active = false;
+        obiekt_pause.SetActive(false);
         //GameObject.FindGameObjectWithTag("Finish").active = true;
-        obiekt_back.active = true;
+        obiekt_back.SetActive(true);
     }
 
     public void StartOver()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
 
     public void Quit()
@@ -123,6 +124,8 @@ public class StartGame : MonoBehaviour
             x.gameObject.GetComponent<fallBonus>().enabled = true;
             x.gameObject.GetComponent<MeasureTime>().enabled = true;
         }
+        foreach (var x in GameObject.FindGameObjectsWithTag("steer"))
+            x.GetComponent<MoveMover>().enabled = true;
     }
 
     private void DisableGame()
@@ -135,6 +138,9 @@ public class StartGame : MonoBehaviour
             x.gameObject.GetComponent<fallBonus>().enabled = false;
             x.gameObject.GetComponent<MeasureTime>().enabled = false;
         }
+
+        foreach (var x in GameObject.FindGameObjectsWithTag("steer"))
+            x.GetComponent<MoveMover>().enabled = false;
         
       
     }
@@ -144,8 +150,8 @@ public class StartGame : MonoBehaviour
         play.gameObject.SetActive(true);
         play.text = "Pause";
 
-                obiekt_pause.active = true;
-                DisableGame();
+                obiekt_pause.SetActive(true);
+        DisableGame();
     }
 
     // Update is called once per frame
@@ -160,7 +166,7 @@ public class StartGame : MonoBehaviour
             //     obiekt_pause.active = true;
             //     DisableGame();
             // }
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.active && !obiekt_pause.active)
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.activeSelf && !obiekt_pause.activeSelf)
             {
                 play.gameObject.SetActive(false);
                 obiekt_ball.GetComponent<MoveBall>().enabled = true;
@@ -170,7 +176,7 @@ public class StartGame : MonoBehaviour
                 play.gameObject.SetActive(true);
                 play.text = "You Lose!";
 
-                obiekt_win_lose.active = true;
+                obiekt_win_lose.SetActive(true);
                 DisableGame();
             }
             if (Count_win == 0)
@@ -178,7 +184,7 @@ public class StartGame : MonoBehaviour
                 play.gameObject.SetActive(true);
                 play.text = "You win!";
 
-                obiekt_win_lose.active = true;
+                obiekt_win_lose.SetActive(true);
                 DisableGame();
             }
         }
