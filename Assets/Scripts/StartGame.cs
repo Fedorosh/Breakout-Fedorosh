@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class StartGame : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class StartGame : MonoBehaviour
     GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
     GameObject obiekt_back;
     int count_win;
+
+    public RectTransform BlockBorders;
+
+    const int AMOUNT = 20;
 
     public GameObject bumperUp;
     public GameObject hoveUp;
@@ -62,12 +67,6 @@ public class StartGame : MonoBehaviour
             obiekt_back.SetActive(false);
             obiekt_pause = GameObject.FindGameObjectWithTag("Interface");
         }
-
-        
-
-
-
-
     }
 
     public void Resume()
@@ -96,6 +95,12 @@ public class StartGame : MonoBehaviour
         obiekt_pause.SetActive(false);
     }
 
+    private void RandomizeBlocks()
+    {
+        System.Random rand = new System.Random();
+        
+        
+    }
     public void Instruction()
     {
         play.gameObject.SetActive(true);
@@ -174,7 +179,7 @@ public class StartGame : MonoBehaviour
             if (lost)
             {
                 play.gameObject.SetActive(true);
-                play.text = "You Lose!";
+                play.text = "You lose!";
 
                 obiekt_win_lose.SetActive(true);
                 DisableGame();
@@ -188,11 +193,14 @@ public class StartGame : MonoBehaviour
                 DisableGame();
             }
         }
-        
-        //if(SceneManager.GetActiveScene().buildIndex == 0)
-        //{
 
-        //}
+        if(BlockBorders != null)
+        {
+            Debug.LogError(BlockBorders.rect.width);
+            Debug.LogError(BlockBorders.rect.height);
+            Debug.LogError(BlockBorders.anchoredPosition.x);
+            Debug.LogError(BlockBorders.anchoredPosition.y);
+        }
 
         if (GameObject.FindObjectOfType<Button>() == null)
             Cursor.visible = false;
