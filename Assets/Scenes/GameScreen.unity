@@ -2620,41 +2620,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff244ad59cedd046a76400892a8cc64, type: 3}
---- !u!1 &629912083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 629912084}
-  m_Layer: 5
-  m_Name: BlocksBorders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &629912084
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629912083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2100707164}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.7}
-  m_SizeDelta: {x: 1080, y: 724.9}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &652607238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8420,7 +8385,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BlockBorders
       value: 
-      objectReference: {fileID: 629912084}
+      objectReference: {fileID: 0}
     - target: {fileID: 8447353086193423612, guid: 1fa045dff219b61479154951c29cb140,
         type: 3}
       propertyPath: m_LocalPosition.x

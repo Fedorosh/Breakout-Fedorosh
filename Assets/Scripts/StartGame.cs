@@ -14,9 +14,10 @@ public class StartGame : MonoBehaviour
     GameObject obiekt_back;
     int count_win;
 
-    public RectTransform BlockBorders;
+    private bool[,] blockPatterns;
 
-    const int AMOUNT = 20;
+    const int TOTAL_BLOCKS_X = 6;
+    const int TOTAL_BLOCKS_Y = 11;
 
     public GameObject bumperUp;
     public GameObject hoveUp;
@@ -31,9 +32,17 @@ public class StartGame : MonoBehaviour
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
 
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            GenerateBlocks();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         typeOfGame = GameObject.Find("TypeOfGame").GetComponent<TypeOfGame>();
         if (instance != null && instance != this)
             Destroy(this);
@@ -107,6 +116,25 @@ public class StartGame : MonoBehaviour
         obiekt_pause.SetActive(false);
         //GameObject.FindGameObjectWithTag("Finish").active = true;
         obiekt_back.SetActive(true);
+    }
+
+    private void GenerateBlocks()
+    {
+        blockPatterns = new bool[TOTAL_BLOCKS_X, TOTAL_BLOCKS_Y];
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
+        for (int i = 0; i < blockPatterns.GetLength(1); i++)
+        {
+            for (int j = 0; j < blockPatterns.GetLength(0); j++)
+                if ((i + 1) % 2 == 1)
+                    blockPatterns[j, i] = true;
+                else blockPatterns[j, i] = false;
+        }
+        int blocksIndex = 0;
+        foreach (var x in blockPatterns)
+        {
+            if (!x) Destroy(blocks[blocksIndex]);
+            blocksIndex++;
+        }
     }
 
     public void StartOver()
@@ -194,13 +222,13 @@ public class StartGame : MonoBehaviour
             }
         }
 
-        if(BlockBorders != null)
-        {
-            Debug.LogError(BlockBorders.rect.width);
-            Debug.LogError(BlockBorders.rect.height);
-            Debug.LogError(BlockBorders.anchoredPosition.x);
-            Debug.LogError(BlockBorders.anchoredPosition.y);
-        }
+        //if(BlockBorders != null)
+        //{
+        //    Debug.LogError(BlockBorders.rect.width);
+        //    Debug.LogError(BlockBorders.rect.height);
+        //    Debug.LogError(BlockBorders.anchoredPosition.x);
+        //    Debug.LogError(BlockBorders.anchoredPosition.y);
+        //}
 
         if (GameObject.FindObjectOfType<Button>() == null)
             Cursor.visible = false;

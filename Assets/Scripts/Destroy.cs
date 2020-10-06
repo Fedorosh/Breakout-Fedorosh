@@ -9,6 +9,8 @@ public class Destroy : MonoBehaviour
     public GameObject prefab;
     private System.Random rand;
 
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject.Find("GameController").GetComponent<StartGame>().Count_win = 0;
