@@ -5,77 +5,63 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-public class StartGame : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public Text play;
-    private static StartGame instance;
+    private static GameController instance;
     private bool lost;
     GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
     GameObject obiekt_back;
     int count_win;
+    private bool typeOfGame;
 
     private bool[,] blockPatterns;
 
     const int TOTAL_BLOCKS_X = 6;
-    const int TOTAL_BLOCKS_Y = 11;
+    const int TOTAL_BLOCKS_Y = 10;
 
     public GameObject bumperUp;
     public GameObject hoveUp;
     public GameObject steerUp;
-
-    [SerializeField] Button one_player;
-    [SerializeField] Button two_players;
-    [SerializeField] TypeOfGame typeOfGame;
-
     public Canvas canvas;
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
-
-    private void Awake()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-            GenerateBlocks();
-    }
+    public bool TypeOfGame { get => typeOfGame; set => typeOfGame = value; }
 
     // Start is called before the first frame update
     void Start()
     {
 
-
-        typeOfGame = GameObject.Find("TypeOfGame").GetComponent<TypeOfGame>();
         if (instance != null && instance != this)
             Destroy(this);
         else instance = this;
+
+        DontDestroyOnLoad(instance.gameObject);
+#if UNITY_EDITOR
         Cursor.visible = false;
+#endif
         count_win = 1;
         lost = false;
 
         //Check if the game should start
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            obiekt_ball = GameObject.Find("ball");
-            obiekt_pause = GameObject.Find("pause");
-            obiekt_win_lose = GameObject.Find("win/lose");
-            obiekt_win_lose.SetActive(false);
-            obiekt_pause.SetActive(false);
-            GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
-            //Check if it's only one player
-            if (!typeOfGame.isTwoPlayers)
-            {
-                bumperUp.SetActive(false);
-                hoveUp.SetActive(true);
-                steerUp.SetActive(false);
-            }
-        }
-        //Check if the scene is menu
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            obiekt_back = GameObject.FindGameObjectWithTag("Finish");
-            if(obiekt_back != null)
-            obiekt_back.SetActive(false);
-            obiekt_pause = GameObject.FindGameObjectWithTag("Interface");
-        }
+        //if (SceneManager.GetActiveScene().buildIndex == 1)
+        //{
+        //    obiekt_ball = GameObject.Find("ball");
+        //    obiekt_pause = GameObject.Find("pause");
+        //    obiekt_win_lose = GameObject.Find("win/lose");
+        //    obiekt_win_lose.SetActive(false);
+        //    obiekt_pause.SetActive(false);
+        //    GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
+        //    //Check if it's only one player
+        //    if (!typeOfGame.isTwoPlayers)
+        //    {
+        //        bumperUp.SetActive(false);
+        //        hoveUp.SetActive(true);
+        //        steerUp.SetActive(false);
+        //    }
+        //}
+
     }
 
     public void Resume()
@@ -86,37 +72,13 @@ public class StartGame : MonoBehaviour
         EnableGame();
     }
 
-    public void Back()
-    {
-        play.gameObject.SetActive(false); 
-        //GameObject.FindGameObjectWithTag("Finish").active = false;
-        obiekt_back.SetActive(false);
-        obiekt_pause.SetActive(true);
-        one_player.gameObject.SetActive(false);
-        two_players.gameObject.SetActive(false);
-    }
-
-    public void SelectType()
-    {
-        one_player.gameObject.SetActive(true);
-        two_players.gameObject.SetActive(true);
-        obiekt_back.SetActive(true);
-        obiekt_pause.SetActive(false);
-    }
-
     private void RandomizeBlocks()
     {
         System.Random rand = new System.Random();
         
         
     }
-    public void Instruction()
-    {
-        play.gameObject.SetActive(true);
-        obiekt_pause.SetActive(false);
-        //GameObject.FindGameObjectWithTag("Finish").active = true;
-        obiekt_back.SetActive(true);
-    }
+    
 
     private void GenerateBlocks()
     {
@@ -125,15 +87,26 @@ public class StartGame : MonoBehaviour
         for (int i = 0; i < blockPatterns.GetLength(1); i++)
         {
             for (int j = 0; j < blockPatterns.GetLength(0); j++)
-                if ((i + 1) % 2 == 1)
+                if (j % 2 == 0)
+
                     blockPatterns[j, i] = true;
-                else blockPatterns[j, i] = false;
+                else
+                    blockPatterns[j, i] = false;
         }
         int blocksIndex = 0;
-        foreach (var x in blockPatterns)
+        //foreach (var x in blockPatterns)
+        //{
+        //    if (!x) Destroy(blocks[blocksIndex]);
+        //    blocksIndex++;
+        //}
+        for (int i = 0; i < blockPatterns.GetLength(0); i++)
         {
-            if (!x) Destroy(blocks[blocksIndex]);
-            blocksIndex++;
+            for (int j = 0; j < blockPatterns.GetLength(1); j++)
+            {
+                if (!blockPatterns[i, j])
+                    Destroy(blocks[blocksIndex]);
+                blocksIndex++;
+            }
         }
     }
 

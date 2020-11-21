@@ -13,14 +13,14 @@ public class Destroy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject.Find("GameController").GetComponent<StartGame>().Count_win = 0;
+        GameObject.Find("GameController").GetComponent<GameController>().Count_win = 0;
 
         collision.otherCollider.gameObject.active = false;
 
 
         foreach (var x in GameObject.FindGameObjectsWithTag("Block"))
         {
-            GameObject.Find("GameController").GetComponent<StartGame>().Count_win++;
+            GameObject.Find("GameController").GetComponent<GameController>().Count_win++;
 
         }
         rand = new System.Random();

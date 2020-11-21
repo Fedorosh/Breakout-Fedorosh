@@ -14,7 +14,7 @@ public class Failure : MonoBehaviour
     {
         if(other.tag == "X_col" || other.tag == "Y_col")
         {
-            obiekt.GetComponent<StartGame>().Lost = true;
+            obiekt.GetComponent<GameController>().Lost = true;
     
         }
     }
