@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
+public enum TypeOfGame
+{
+    solo = 0,
+    duo = 1
+}
+
 public class GameController : MonoBehaviour
 {
     public Text play;
@@ -13,7 +19,10 @@ public class GameController : MonoBehaviour
     GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
     GameObject obiekt_back;
     int count_win;
-    private bool typeOfGame;
+    private TypeOfGame typeOfGame;
+
+
+    public static GameController Instance { get { return instance; } }
 
     private bool[,] blockPatterns;
 
@@ -27,7 +36,6 @@ public class GameController : MonoBehaviour
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
-    public bool TypeOfGame { get => typeOfGame; set => typeOfGame = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +72,18 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void StartOnePlayer()
+    {
+        typeOfGame = TypeOfGame.solo;
+        SceneManager.LoadScene(1);
+    }
+
+    public void StartTwoPlayers()
+    {
+        typeOfGame = TypeOfGame.duo;
+        SceneManager.LoadScene(1);
+    }
+
     public void Resume()
     {
         play.gameObject.SetActive(false);
@@ -75,8 +95,6 @@ public class GameController : MonoBehaviour
     private void RandomizeBlocks()
     {
         System.Random rand = new System.Random();
-        
-        
     }
     
 
