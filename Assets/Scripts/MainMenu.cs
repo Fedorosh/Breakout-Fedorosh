@@ -34,12 +34,12 @@ public class MainMenu : MonoBehaviour
         get { return instance; }
     }
 
-    private void Awake()
-    {
-        foreach(var x in screens)
-        Debug.Log(x.przycisk.onClick.GetPersistentEventCount());
+    //private void Awake()
+    //{
+    //    foreach(var x in screens)
+    //    Debug.Log(x.przycisk.onClick.GetPersistentEventCount());
 
-    }
+    //}
 
 
     // Start is called before the first frame update

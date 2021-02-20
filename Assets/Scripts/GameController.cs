@@ -13,11 +13,14 @@ public enum TypeOfGame
 
 public class GameController : MonoBehaviour
 {
-    public Text play;
     private static GameController instance;
     private bool lost;
-    GameObject obiekt_ball,obiekt_pause,obiekt_win_lose;
-    GameObject obiekt_back;
+    public GameObject obiekt_ball;
+    [SerializeField]
+    private GameObject PauseScreen;
+    [SerializeField]
+    private GameObject ResultScreen;
+    //public GameObject obiekt_back;
     int count_win;
     private TypeOfGame typeOfGame;
 
@@ -29,10 +32,10 @@ public class GameController : MonoBehaviour
     const int TOTAL_BLOCKS_X = 6;
     const int TOTAL_BLOCKS_Y = 10;
 
-    public GameObject bumperUp;
-    public GameObject hoveUp;
-    public GameObject steerUp;
-    public Canvas canvas;
+    //public GameObject bumperUp;
+    //public GameObject hoveUp;
+    //public GameObject steerUp;
+    //public Canvas canvas;
 
     public bool Lost { get => lost; set => lost = value; }
     public int Count_win { get => count_win; set => count_win = value; }
@@ -52,14 +55,17 @@ public class GameController : MonoBehaviour
         count_win = 1;
         lost = false;
 
+
+        
+
         //Check if the game should start
         //if (SceneManager.GetActiveScene().buildIndex == 1)
         //{
         //    obiekt_ball = GameObject.Find("ball");
-        //    obiekt_pause = GameObject.Find("pause");
-        //    obiekt_win_lose = GameObject.Find("win/lose");
-        //    obiekt_win_lose.SetActive(false);
-        //    obiekt_pause.SetActive(false);
+        //    PauseScreen = GameObject.Find("pause");
+        //    ResultScreen = GameObject.Find("win/lose");
+        //    ResultScreen.SetActive(false);
+        //    PauseScreen.SetActive(false);
         //    GameObject.Find("ball").GetComponent<MoveBall>().enabled = false;
         //    //Check if it's only one player
         //    if (!typeOfGame.isTwoPlayers)
@@ -86,9 +92,7 @@ public class GameController : MonoBehaviour
 
     public void Resume()
     {
-        play.gameObject.SetActive(false);
-
-        obiekt_pause.SetActive(false); 
+        PauseScreen.SetActive(false); 
         EnableGame();
     }
 
@@ -171,10 +175,8 @@ public class GameController : MonoBehaviour
 
     public void Pause()
     {
-        play.gameObject.SetActive(true);
-        play.text = "Pause";
 
-                obiekt_pause.SetActive(true);
+        PauseScreen.SetActive(true);
         DisableGame();
     }
 
@@ -187,28 +189,23 @@ public class GameController : MonoBehaviour
             // {
             //     play.text = "Pause";
 
-            //     obiekt_pause.active = true;
+            //     PauseScreen.active = true;
             //     DisableGame();
             // }
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !obiekt_win_lose.activeSelf && !obiekt_pause.activeSelf)
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0) && !ResultScreen.activeSelf && !PauseScreen.activeSelf)
             {
-                play.gameObject.SetActive(false);
                 obiekt_ball.GetComponent<MoveBall>().enabled = true;
             }
             if (lost)
             {
-                play.gameObject.SetActive(true);
-                play.text = "You lose!";
 
-                obiekt_win_lose.SetActive(true);
+                ResultScreen.SetActive(true);
                 DisableGame();
             }
             if (Count_win == 0)
             {
-                play.gameObject.SetActive(true);
-                play.text = "You win!";
 
-                obiekt_win_lose.SetActive(true);
+                ResultScreen.SetActive(true);
                 DisableGame();
             }
         }
