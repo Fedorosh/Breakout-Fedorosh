@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af65ee6b0f35f974dba93979a07edbce, type: 3}
-  m_Name: Text_MainMenu
+  m_Name: Language
   m_EditorClassIdentifier: 
   m_LocaleItems:
   - m_Language: -1
@@ -18,40 +18,40 @@ MonoBehaviour:
       m_Name: English
       m_Code: en
       m_Custom: 0
-    m_Value: Main Menu
+    m_Value: Language
   - m_Language: -1
     m_Language2:
       m_Name: Polish
       m_Code: pl
       m_Custom: 0
-    m_Value: "Menu G\u0142\xF3wne"
+    m_Value: "J\u0119zyk"
   - m_Language: -1
     m_Language2:
       m_Name: German
       m_Code: de
       m_Custom: 0
-    m_Value: "Hauptmen\xFC"
+    m_Value: Sprache
   - m_Language: -1
     m_Language2:
       m_Name: ChineseSimplified
       m_Code: zh-Hans
       m_Custom: 0
-    m_Value: "\u4E3B\u83DC\u5355"
+    m_Value: "\u8BED\u8A00"
   - m_Language: -1
     m_Language2:
       m_Name: Russian
       m_Code: ru
       m_Custom: 0
-    m_Value: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
+    m_Value: "\u044F\u0437\u044B\u043A"
   - m_Language: -1
     m_Language2:
       m_Name: Spanish
       m_Code: es
       m_Custom: 0
-    m_Value: "Men\xFA principal"
+    m_Value: idioma
   - m_Language: -1
     m_Language2:
       m_Name: Japanese
       m_Code: ja
       m_Custom: 0
-    m_Value: "\u30E1\u30A4\u30F3\u30E1\u30CB\u30E5\u30FC"
+    m_Value: "\u8A00\u8A9E"

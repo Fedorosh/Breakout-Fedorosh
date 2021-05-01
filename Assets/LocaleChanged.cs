@@ -35,7 +35,7 @@ public class LocaleChanged : MonoBehaviour
             case "English": lang = SystemLanguage.English; break;
             case "Polish": lang = SystemLanguage.Polish; break;
             case "German": lang = SystemLanguage.German; break;
-            case "Chinese (simplified)": lang = SystemLanguage.ChineseSimplified; break;
+            case "Chinese (Simplified)": lang = SystemLanguage.ChineseSimplified; break;
             case "Russian": lang = SystemLanguage.Russian; break;
             case "Spanish": lang = SystemLanguage.Spanish; break;
             case "Japanese": lang = SystemLanguage.Japanese; break;
